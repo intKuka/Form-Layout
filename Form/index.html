@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Регистрация - Автозапчасти</title>
+        <link rel="stylesheet" href="css/bulma/css/bulma.css">
+        <link rel="stylesheet" href="css/formStyle.css">
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+    <body>  
+        <div style="width: 70%; align-content: center; margin: auto;">
+            <header>
+                <h1>Регистрация</h1>  
+            </header>
+            
+            <!-- client type block -->
+            <form id="registration" formmethod="post">
+                <div padding-top="40px">
+                    <p>Вы регистрируетесь как</p>
+                    <div class="control">
+                        <label for="customer" class="radio" style="margin-left: 0">
+                            <input id="customer" type="radio" name="clientType" value="customer" onchange="specifyClient()">
+                            <strong>Покупатель</strong>
+                          </label>
+                    </div>
+                    <div class="control">
+                        <label for="provider" class="radio" style="margin-left: 0">
+                            <input id="provider" type="radio" name="clientType" value="provider" onchange="specifyClient()" checked>
+                            <strong>Поставщик</strong>
+                        </label>
+                    </div>                    
+                </div>
+                <br><br>
+
+                <!-- grid container to justify the rest of the fields -->
+                <div class="grid-container">
+                    <div class="infoField">
+                        <label for="email">Эл. почта</label>
+                    </div>
+                    <div class="field">
+                        <input required id="email" class="input control is-small fixedField" type="email" name="email">
+                    </div>
+                    <div>
+                        <p class="infoField">Название организации</p>
+                    </div>
+                    <div></div>
+                    <div class="infoField">
+                        <label for="name">ИП или Юр. лицо</label>
+                    </div>
+                    <div class="field">
+                        <input required id="name" class="input control is-small fixedField" type="text" name="name">
+                    </div>
+                    <div class="infoField">
+                        <label for="ITN">ИНН</label>
+                    </div>
+                    <div class="field">
+                        <input required id="ITN" class="input control is-small fixedField" type="number" name="ITN">
+                    </div>
+                    <div>
+                        <p class="infoField">Физический адрес</p>
+                    </div>
+                    <div></div>
+                    <div class="infoField">
+                        <label for="city">Ваш город</label>
+                    </div>
+                    <div>
+                        <input required id="city" class="input control is-small fixedField" type="text" name="city">
+                    </div>
+                    <div class="infoField" style="margin-top: 10px;">
+                        <label for="street">Улица</label>
+                    </div>
+                    <div class="field" style="margin-top: 10px;">
+                        <input required id="street" class="input control is-small" type="text" name="street" style="width: 250px;">
+                        <label for="building" style="margin-left:25px; margin-right:15px;">Дом/стр.</label>
+                        <input required id="building" class="input control is-small" type="text" name="building" style="width: 150px;">
+                        <label for="office" style="margin-left:25px; margin-right:15px;">Офис</label>
+                        <input id="office" class="input control is-small" type="text" name="office" style="width: 60px;">
+                    </div>
+                    <div class="infoField">
+                        <label for="phone">Телефон</label>
+                    </div>
+                    <div>       
+                        <input readonly class="input control is-small" type="tel" value="+7" style="width: 35px;">                 
+                        <input id="phone" class="input control is-small" type="tel" name="phone" style="width: 150px;">
+                    </div>
+                    <div class="infoField">
+                        <label for="site" id="siteLabel">Сайт Вашей компании</label>
+                    </div>
+                    <div>
+                        <input id="site" class="input control is-small fixedField" type="url" name="site">
+                    </div>
+                    <div>
+                        <p class="infoField">Виды деятельности</p>
+                    </div>
+                    <div></div>                    
+                    <div class="infoField">
+                        <label for="shop">Магазин</label>
+                    </div>
+                    <div>
+                        <input id="shop" type="checkbox" name="activity" value="shop">
+                    </div>
+                    <div class="infoField">
+                        <label for="regionShop">Региональная сеть магазинов</label>
+                    </div>
+                    <div>
+                        <input id="regionShop" type="checkbox" name="activity" value="regionShop">
+                    </div>
+                    <div class="infoField">
+                        <label for="federalShop">Федеральная сеть магазинов</label>
+                    </div>
+                    <div>
+                        <input id="federalShop" type="checkbox" name="activity" value="federalShop">
+                    </div>
+                    <div class="infoField">
+                        <label for="internetShop">Интернет-магазин</label>
+                    </div>
+                    <div>
+                        <input id="internetShop" type="checkbox" name="activity" value="internetShop">
+                    </div>
+                    <div class="infoField">
+                        <label for="carService">Автосервис</label>
+                    </div>
+                    <div>
+                        <input id="carService" type="checkbox" name="activity" value="carService">
+                    </div>
+                    <div class="infoField">
+                        <label for="other">Прочее</label>
+                    </div>
+                    <div>
+                        <input id="other" class="input control is-small fixedField" type="text" name="otherActivity">
+                    </div>
+                </div>
+                
+                <!-- submit button with Bulma modal locig -->
+                <div>
+                    <button class="js-modal-trigger" data-target="modal-js-success" type="submit">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- layout for the message popup -->
+        <div id="modal-js-success" class="modal">
+            <div class="modal-background"></div>          
+            <div class="modal-content">                
+                <article class="message is-success">
+                    <div class="message-header">
+                        <p>Готово!</p>
+                    </div>
+                    <div class="message-body">
+                        Заявка успешно отправлена.
+                    </div>
+                </article>                
+            </div>          
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
+
+        <script src="js/form.js"></script>
+        <script src="js/popUp.js"></script>
+    </body>
+</html>
